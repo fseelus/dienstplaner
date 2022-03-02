@@ -1,0 +1,19 @@
+<div class="container-fluid">
+
+  <h1>Dienstplaner</h1>
+
+  <div class="d-inline">
+    <%= link_to new_shift_path, class: "btn btn-secondary" do %>
+      <i class="bi bi-plus-circle-fill"></i> Neuen Plan erstellen
+    <% end %>
+  </div>
+  <div class="d-inline">
+    <%= link_to "PDF", shifts_path(format: :pdf), class:"btn btn-warning" %>
+  </div>
+  <hr>
+
+  <%= render "shifts/pdf/monthly_all" %>
+
+
+
+</div>

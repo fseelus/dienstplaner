@@ -1,0 +1,17 @@
+<div class="container-fluid">
+
+  <h1><%= @shift.employee.first_name %>'s Dienstplan</h1>
+
+  <div style="display:inline-block;">
+    <%= button_to "Dienstplan löschen", @shift, method: :delete, class: "btn btn-danger" %>
+  </div>
+  <div class="d-inline">
+    <%= link_to "PDF", shift_path(format: :pdf), class:"btn btn-warning" %>
+  </div>
+  <hr>
+  <%= render "shifts/pdf/weekly" %>
+
+  <div>
+    <%= link_to "Zurück zur Übersicht", shifts_path %>
+  </div>
+</div>

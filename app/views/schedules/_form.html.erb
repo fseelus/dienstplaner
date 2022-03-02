@@ -1,0 +1,46 @@
+<div class="container">
+  <%= form_with(model: @shift) do |form| %>
+    <% if @shift.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@shift.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+        <ul>
+          <% @shift.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+        <%= form.collection_select :building_id, @buildings, :id, :name, { :prompt => 'Gebäude auswählen', :selected => @shift.building_id }, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= form.collection_select :floor_id, @floors, :id, :name, { :prompt => 'Stockwerk wählen', :selected => @shift.floor_id }, class: "form-control" %>
+    </div>
+
+    <div class="input-group">
+            <span class="input-group-text">Startdatum</span>
+            <%= form.date_field :startdate, as: :date, value: form.object.try(:strftime,"%m/%d/%Y"), value: Date.today, class: "form-control" %>
+
+            <span class="input-group-text" style="border-left: 0; border-right: 0;">Enddatum</span>
+            <%= form.date_field :enddate, as: :date, value: form.object.try(:strftime,"%m/%d/%Y"), value: Date.tomorrow, class: "form-control" %>
+    </div><br>
+
+    <div class="form-group">
+        <%= form.text_field :name, placeholder: "Name", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= form.select :bgcolor_id, options_for_select([['grün', 1], ['blau', 2], ['gelb', 3], ['rot', 4]]), class: "form-control" %>
+    </div>
+
+    <div>
+      <%= form.text_field :creator_id, value: 1, hidden: true, class: "form-control" %>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

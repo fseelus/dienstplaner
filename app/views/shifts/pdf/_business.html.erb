@@ -1,0 +1,13 @@
+<%= SimpleCalendar::BusinessWeekCalendar.new(self, {number_of_weeks: 4, events: @shifts, attribute: :startdate, end_attribute: :enddate}).render do |date, shifts| %>
+<div class="border border-secondary rounded" style="width: 160px; height: 200px;">
+  <small class="mx-1"><%= l(date, format: :short) %></small>
+  <% shifts.each do |shift| %>
+
+  <% if shift.startdate.monday? %>
+    <div class="shift<%= shift.bgcolor_id %>">
+      <%= link_to shift.name, shift_path(shift), class: "text-dark" %>
+    </div>
+    <% end %>
+ <% end %>
+ </div>
+<% end %>

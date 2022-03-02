@@ -1,0 +1,10 @@
+<%= week_calendar(number_of_weeks: 2, events: @shifts, attribute: :startdate, end_attribute: :enddate) do |date, shifts| %>
+<div class="border border-secondary rounded" style="width: 120px; height: 160px;">
+  <p class="display-4 text-right font-weight-bold text-secondary"><%= l(date, format: :dayonly) %></p>
+    <% shifts.each do |shift| %>
+      <div class="shift<%= shift.bgcolor_id %>">
+        <%= link_to shift.name, shift_path(shift), class: "text-dark" %>
+      </div>
+   <% end %>
+</div>
+<% end %>

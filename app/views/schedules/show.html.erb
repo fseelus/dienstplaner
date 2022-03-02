@@ -1,0 +1,23 @@
+<h1>Dienstplan für <%= @schedule.employee.full_name %></h1>
+<%= link_to "< zurück", schedules_path %>
+<hr>
+<div class="accordion-flush" id="accordionExample">
+  <div class="card w-100">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left text-bold text-dark" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+           Neue Schicht erstellen
+          </button>
+        </h2>
+      </div>
+  </div>
+
+  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div class="card-body">
+      <%= render "shifts/form", schedule: @schedule, shift: @shift %>
+    </div>
+  </div>
+
+</div>
+<br>
+  <%= render "shifts/pdf/weekly" %>

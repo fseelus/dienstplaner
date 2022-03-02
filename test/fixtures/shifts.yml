@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  startdate: 2022-02-16
+  enddate: 2022-02-16
+  floor: one
+  employee: one
+  employer: one
+
+two:
+  name: MyString
+  startdate: 2022-02-16
+  enddate: 2022-02-16
+  floor: two
+  employee: two
+  employer: two
